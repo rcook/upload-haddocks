@@ -1,0 +1,18 @@
+#!/bin/bash
+############################################################
+#
+# setup
+# Copyright (C) 2017, Richard Cook
+# Released under MIT License
+# https://github.com/rcook/upload-haddocks
+#
+############################################################
+
+set -euo pipefail
+IFS=$'\n\t'
+
+script_dir=$(cd $(dirname $0); pwd -P)
+repo_dir=$script_dir
+
+cd $repo_dir
+$script_dir/bootstrap $script_dir/setup.py $*
