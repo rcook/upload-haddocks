@@ -13,7 +13,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="upload-haddocks",
-    version="0.2",
+    version="0.3",
     description="Fix up Stack-generated Haskell documentation and upload it to Hackage",
     classifiers=[
         "Development Status :: 3 - Alpha",
