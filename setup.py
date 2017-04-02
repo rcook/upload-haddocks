@@ -13,7 +13,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="upload-haddocks",
-    version="0.1",
+    version="0.2",
     description="Fix up Stack-generated Haskell documentation and upload it to Hackage",
     setup_requires=["setuptools-markdown"],
     long_description_markdown_filename="README.md",
