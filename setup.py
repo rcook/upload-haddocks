@@ -15,8 +15,6 @@ setup(
     name="upload-haddocks",
     version="0.2",
     description="Fix up Stack-generated Haskell documentation and upload it to Hackage",
-    setup_requires=["setuptools-markdown"],
-    long_description_markdown_filename="README.md",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
