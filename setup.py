@@ -25,12 +25,13 @@ def _read_properties():
 
     return props
 
-_PROPERTIES = _read_properties()
-version = _PROPERTIES["version"]
-description = _PROPERTIES["description"]
+props = _read_properties()
+project_name = props["project_name"]
+version = props["version"]
+description = props["description"]
 
 setup(
-    name="upload-haddocks",
+    name=project_name,
     version=version,
     description=description,
     classifiers=[
@@ -48,7 +49,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "upload-haddocks = uploadhaddocks.__main__:_main"
+            "{} = uploadhaddocks.__main__:_main".format(project_name)
         ]
     },
     include_package_data=True,
