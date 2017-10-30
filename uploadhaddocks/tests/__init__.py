@@ -1,6 +1,6 @@
 ############################################################
 #
-# upload_haddocks.tests
+# uploadhaddocks.tests
 # Copyright (C) 2017, Richard Cook
 # Released under MIT License
 # https://github.com/rcook/upload-haddocks
@@ -24,7 +24,7 @@ def _get_test_suite(module_name):
 
 def suite():
     suite = unittest.TestSuite()
-    for module_name in _get_module_names("pyprelude"):
+    for module_name in _get_module_names("uploadhaddocks"):
         tests = _get_test_suite(module_name)
         if tests:
             suite.addTests(tests)

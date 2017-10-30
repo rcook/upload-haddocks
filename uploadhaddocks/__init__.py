@@ -1,18 +1,12 @@
-#!/bin/bash
 ############################################################
 #
-# setup
+# uploadhaddocks
 # Copyright (C) 2017, Richard Cook
 # Released under MIT License
 # https://github.com/rcook/upload-haddocks
 #
 ############################################################
 
-set -euo pipefail
-IFS=$'\n\t'
-
-script_dir=$(cd $(dirname $0); pwd -P)
-repo_dir=$script_dir
-
-cd $repo_dir
-$script_dir/bootstrap $script_dir/setup.py $*
+__project_name__ = "upload-haddocks"
+__version__ = "0.3"
+__description__ = "Fix up Haskell documentation and upload it to Hackage"

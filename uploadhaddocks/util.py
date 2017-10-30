@@ -1,6 +1,6 @@
 ############################################################
 #
-# upload_haddocks.util
+# uploadhaddocks.util
 # Copyright (C) 2017, Richard Cook
 # Released under MIT License
 # https://github.com/rcook/upload-haddocks

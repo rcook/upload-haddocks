@@ -1,9 +1,6 @@
-*.pyc
-/.Python
 /.eggs/
-/bin/
+/build/
 /dist/
-/include/
-/lib/
-/pip-selfcheck.json
+/env/
 /upload_haddocks.egg-info/
+*.pyc

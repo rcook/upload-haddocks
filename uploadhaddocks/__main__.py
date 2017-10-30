@@ -1,6 +1,6 @@
 ############################################################
 #
-# upload_haddocks.__main__
+# uploadhaddocks.__main__
 # Copyright (C) 2017, Richard Cook
 # Released under MIT License
 # https://github.com/rcook/upload-haddocks
@@ -10,9 +10,12 @@
 from __future__ import print_function
 import argparse
 import os
+import sys
+
 from pyprelude.file_system import make_path
 
-from upload_haddocks.util import upload_haddocks
+from uploadhaddocks import __description__, __project_name__, __version__
+from uploadhaddocks.util import upload_haddocks
 
 def _parse_path(p):
     return make_path(os.getcwd(), os.path.expanduser(p))
@@ -29,8 +32,12 @@ def _parse_dir_must_exist(path):
         raise argparse.ArgumentTypeError("Directory {} does not exist".format(path))
     return path
 
-def _main():
-    parser = argparse.ArgumentParser(description="Generate Haddocks and upload to Hackage")
+def _main(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+
+    parser = argparse.ArgumentParser(description=__description__)
+    parser.add_argument("--version", action="version", version="{} version {}".format(__project_name__, __version__))
     parser.add_argument(
         "--creds",
         "-c",
