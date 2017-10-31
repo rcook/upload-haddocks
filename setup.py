@@ -26,14 +26,15 @@ def _read_properties():
     return props
 
 props = _read_properties()
-project_name = props["project_name"]
 version = props["version"]
 description = props["description"]
 
 setup(
-    name=project_name,
+    name="upload-haddocks",
     version=version,
     description=description,
+    setup_requires=["setuptools-markdown"],
+    long_description_markdown_filename="README.md",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
@@ -49,7 +50,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "{} = uploadhaddocks.__main__:_main".format(project_name)
+            "upload-haddocks = uploadhaddocks.__main__:_main"
         ]
     },
     include_package_data=True,
