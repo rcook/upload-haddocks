@@ -1,6 +1,5 @@
 /.eggs/
 /build/
 /dist/
-/env/
 /upload_haddocks.egg-info/
 *.pyc
