@@ -32,9 +32,23 @@ def _parse_dir_must_exist(path):
         raise argparse.ArgumentTypeError("Directory {} does not exist".format(path))
     return path
 
+def _default_credentials_path():
+    candidates = [
+        make_path(os.getenv("STACK_ROOT"), "upload", "credentials.json"),
+        _parse_path("~/.stack/upload/credentials.json")
+    ]
+
+    for candidate in candidates:
+        if os.path.isfile(candidate):
+            return candidate
+
+    return None
+
 def _main(argv=None):
     if argv is None:
         argv = sys.argv[1:]
+
+    default_credentials_path = _default_credentials_path()
 
     parser = argparse.ArgumentParser(description=__description__)
     parser.add_argument("--version", action="version", version="{} version {}".format(__project_name__, __version__))
@@ -43,8 +57,9 @@ def _main(argv=None):
         "-c",
         metavar="CREDENTIALSPATH",
         dest="credentials_path",
-        default=_parse_path("~/.stack/upload/credentials.json"),
+        default=default_credentials_path,
         type=_parse_file_must_exist,
+        required=default_credentials_path is None,
         help="path to Stack credentials file")
     parser.add_argument(
         "--project-dir",
