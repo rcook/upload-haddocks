@@ -94,7 +94,7 @@ def _munge_docs(doc_dir):
             if ext == ".html":
                 _munge_file(p)
 
-def _create_archive(project_dir, doc_dir):
+def _create_archive(doc_dir):
     parent_dir = os.path.dirname(doc_dir)
     subdir = os.path.basename(doc_dir)
     tar_path = "{}.tar.gz".format(doc_dir)
@@ -106,7 +106,8 @@ def _create_archive(project_dir, doc_dir):
                 ti = tf.gettarinfo(p, arc_name)
                 ti.uid = 0
                 ti.gid = 0
-                tf.addfile(ti, file(p))
+                with open(p, "rb") as f:
+                    tf.addfile(ti, f)
     return tar_path
 
 def _upload_archive(user_name, password, tar_path, package_name, package_version):
@@ -143,7 +144,7 @@ def upload_haddocks(credentials_path, project_dir):
         _munge_docs(doc_dir)
 
         print("* Pack")
-        tar_path = _create_archive(project_dir, doc_dir)
+        tar_path = _create_archive(doc_dir)
 
         print("* Upload")
         _upload_archive(user_name, password, tar_path, package_name, package_version)
