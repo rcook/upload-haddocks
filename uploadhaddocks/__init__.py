@@ -8,5 +8,5 @@
 ############################################################
 
 __project_name__ = "upload-haddocks"
-__version__ = "0.4"
+__version__ = "0.5"
 __description__ = "Fix up Haskell documentation and upload it to Hackage"
