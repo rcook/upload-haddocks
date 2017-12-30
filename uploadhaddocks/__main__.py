@@ -33,16 +33,11 @@ def _parse_dir_must_exist(path):
     return path
 
 def _default_credentials_path():
-    candidates = [
-        make_path(os.getenv("STACK_ROOT"), "upload", "credentials.json"),
-        _parse_path("~/.stack/upload/credentials.json")
-    ]
-
-    for candidate in candidates:
-        if os.path.isfile(candidate):
-            return candidate
-
-    return None
+    stack_dir = os.getenv("STACK_ROOT")
+    p = _parse_path("~/.stack/upload/credentials.json") \
+        if stack_dir is None \
+        else make_path(stack_dir, "upload", "credentials.json")
+    return p if os.path.isfile(p) else None
 
 def _main(argv=None):
     if argv is None:
